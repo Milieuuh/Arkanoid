@@ -23,8 +23,8 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *btn_quitter;
-    QPushButton *btn_resume;
+    QPushButton *btnUI_quitter;
+    QPushButton *btnUI_resume;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -32,15 +32,23 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+        MainWindow->setEnabled(true);
         MainWindow->resize(800, 600);
+        MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(47, 47, 47);"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        btn_quitter = new QPushButton(centralwidget);
-        btn_quitter->setObjectName(QString::fromUtf8("btn_quitter"));
-        btn_quitter->setGeometry(QRect(660, 30, 93, 28));
-        btn_resume = new QPushButton(centralwidget);
-        btn_resume->setObjectName(QString::fromUtf8("btn_resume"));
-        btn_resume->setGeometry(QRect(540, 30, 93, 28));
+        btnUI_quitter = new QPushButton(centralwidget);
+        btnUI_quitter->setObjectName(QString::fromUtf8("btnUI_quitter"));
+        btnUI_quitter->setGeometry(QRect(660, 30, 120, 35));
+        QFont font;
+        font.setPointSize(12);
+        font.setBold(false);
+        font.setWeight(50);
+        btnUI_quitter->setFont(font);
+        btnUI_resume = new QPushButton(centralwidget);
+        btnUI_resume->setObjectName(QString::fromUtf8("btnUI_resume"));
+        btnUI_resume->setGeometry(QRect(520, 30, 120, 35));
+        btnUI_resume->setFont(font);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -58,8 +66,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        btn_quitter->setText(QCoreApplication::translate("MainWindow", "QUITTER", nullptr));
-        btn_resume->setText(QCoreApplication::translate("MainWindow", "RESUME", nullptr));
+        btnUI_quitter->setText(QCoreApplication::translate("MainWindow", "QUITTER", nullptr));
+        btnUI_resume->setText(QCoreApplication::translate("MainWindow", "RESUME", nullptr));
     } // retranslateUi
 
 };
