@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>964</width>
     <height>600</height>
    </rect>
   </property>
@@ -23,7 +23,7 @@
    <widget class="QPushButton" name="btnUI_quitter">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>800</x>
       <y>30</y>
       <width>120</width>
       <height>35</height>
@@ -43,7 +43,7 @@
    <widget class="QPushButton" name="btnUI_resume">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>660</x>
       <y>30</y>
       <width>120</width>
       <height>35</height>
@@ -60,19 +60,56 @@
      <string>RESUME</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>20</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font-size:40px; </string>
+    </property>
+    <property name="text">
+     <string>WIFIBOT</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>901</width>
+      <height>2</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: white;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>964</width>
      <height>26</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>btnUI_quitter</tabstop>
+  <tabstop>btnUI_resume</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
