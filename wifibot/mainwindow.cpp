@@ -20,6 +20,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::graphismeBouton(QPushButton* b)
 {
-    b->setStyleSheet("* { background-color: white; border-width: 2px; border-radius: 10px; }");
+    b->setStyleSheet("* { background-color: white; border-width: 2px; border-radius: 10px; }"
+                     "*:hover { color: green; border-width: 2px; border-radius: 10px; }");
+
 }
 
+
+void MainWindow::on_btnUI_quitter_clicked()
+{
+    this->close();
+}

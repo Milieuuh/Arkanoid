@@ -18,6 +18,9 @@ public:
 
     void graphismeBouton(QPushButton* b);
 
+private slots:
+    void on_btnUI_quitter_clicked();
+
 private:
     Ui::MainWindow *ui;
 
