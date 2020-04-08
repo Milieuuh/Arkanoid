@@ -30,9 +30,9 @@ public:
     QLabel *label_2;
     QPushButton *btnUI_Start;
     QPushButton *btnUI_haut;
-    QPushButton *btnUI_haut_2;
-    QPushButton *btnUI_haut_3;
-    QPushButton *btnUI_haut_4;
+    QPushButton *btnUI_droite;
+    QPushButton *btnUI_gauche;
+    QPushButton *btnUI_bas;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
 
@@ -79,32 +79,32 @@ public:
 "color:#fff;"));
         btnUI_haut = new QPushButton(centralwidget);
         btnUI_haut->setObjectName(QString::fromUtf8("btnUI_haut"));
-        btnUI_haut->setGeometry(QRect(690, 130, 81, 91));
+        btnUI_haut->setGeometry(QRect(700, 130, 81, 91));
         btnUI_haut->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
 "border-right-width: 50px;\n"
 "border-left-width: 50px;\n"
-"border-bottom: 100px solid blue;"));
-        btnUI_haut_2 = new QPushButton(centralwidget);
-        btnUI_haut_2->setObjectName(QString::fromUtf8("btnUI_haut_2"));
-        btnUI_haut_2->setGeometry(QRect(800, 250, 91, 81));
-        btnUI_haut_2->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
+"border-bottom: 100px solid #c0c0c0;"));
+        btnUI_droite = new QPushButton(centralwidget);
+        btnUI_droite->setObjectName(QString::fromUtf8("btnUI_droite"));
+        btnUI_droite->setGeometry(QRect(810, 250, 91, 81));
+        btnUI_droite->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
 "border-top-width: 50px;\n"
-"border-left: 100px solid blue;\n"
+"border-left: 100px solid #c0c0c0;\n"
 "border-bottom-width: 50px;"));
-        btnUI_haut_3 = new QPushButton(centralwidget);
-        btnUI_haut_3->setObjectName(QString::fromUtf8("btnUI_haut_3"));
-        btnUI_haut_3->setGeometry(QRect(570, 240, 91, 81));
-        btnUI_haut_3->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
+        btnUI_gauche = new QPushButton(centralwidget);
+        btnUI_gauche->setObjectName(QString::fromUtf8("btnUI_gauche"));
+        btnUI_gauche->setGeometry(QRect(580, 250, 91, 81));
+        btnUI_gauche->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
 "border-top-width: 50px;\n"
-"border-right: 100px solid blue;\n"
+"border-right: 100px solid #c0c0c0;\n"
 "border-bottom-width: 50px;"));
-        btnUI_haut_4 = new QPushButton(centralwidget);
-        btnUI_haut_4->setObjectName(QString::fromUtf8("btnUI_haut_4"));
-        btnUI_haut_4->setGeometry(QRect(700, 360, 81, 91));
-        btnUI_haut_4->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
+        btnUI_bas = new QPushButton(centralwidget);
+        btnUI_bas->setObjectName(QString::fromUtf8("btnUI_bas"));
+        btnUI_bas->setGeometry(QRect(700, 360, 81, 81));
+        btnUI_bas->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
 "border-right-width: 50px;\n"
 "border-left-width: 50px;\n"
-"border-top: 100px solid blue;"));
+"border-top: 100px solid #c0c0c0;"));
         MainWindow->setCentralWidget(centralwidget);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -129,9 +129,9 @@ public:
         label_2->setText(QString());
         btnUI_Start->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
         btnUI_haut->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        btnUI_haut_2->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        btnUI_haut_3->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        btnUI_haut_4->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        btnUI_droite->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        btnUI_gauche->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        btnUI_bas->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

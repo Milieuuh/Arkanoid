@@ -128,7 +128,7 @@ color:#fff;</string>
    <widget class="QPushButton" name="btnUI_haut">
     <property name="geometry">
      <rect>
-      <x>690</x>
+      <x>700</x>
       <y>130</y>
       <width>81</width>
       <height>91</height>
@@ -138,16 +138,16 @@ color:#fff;</string>
      <string notr="true">border: 0 solid rgb(47, 47, 47);
 border-right-width: 50px;
 border-left-width: 50px;
-border-bottom: 100px solid blue;</string>
+border-bottom: 100px solid #c0c0c0;</string>
     </property>
     <property name="text">
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnUI_haut_2">
+   <widget class="QPushButton" name="btnUI_droite">
     <property name="geometry">
      <rect>
-      <x>800</x>
+      <x>810</x>
       <y>250</y>
       <width>91</width>
       <height>81</height>
@@ -156,18 +156,18 @@ border-bottom: 100px solid blue;</string>
     <property name="styleSheet">
      <string notr="true">border: 0 solid rgb(47, 47, 47);
 border-top-width: 50px;
-border-left: 100px solid blue;
+border-left: 100px solid #c0c0c0;
 border-bottom-width: 50px;</string>
     </property>
     <property name="text">
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnUI_haut_3">
+   <widget class="QPushButton" name="btnUI_gauche">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>240</y>
+      <x>580</x>
+      <y>250</y>
       <width>91</width>
       <height>81</height>
      </rect>
@@ -175,27 +175,27 @@ border-bottom-width: 50px;</string>
     <property name="styleSheet">
      <string notr="true">border: 0 solid rgb(47, 47, 47);
 border-top-width: 50px;
-border-right: 100px solid blue;
+border-right: 100px solid #c0c0c0;
 border-bottom-width: 50px;</string>
     </property>
     <property name="text">
      <string>PushButton</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnUI_haut_4">
+   <widget class="QPushButton" name="btnUI_bas">
     <property name="geometry">
      <rect>
       <x>700</x>
       <y>360</y>
       <width>81</width>
-      <height>91</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">border: 0 solid rgb(47, 47, 47);
 border-right-width: 50px;
 border-left-width: 50px;
-border-top: 100px solid blue;</string>
+border-top: 100px solid #c0c0c0;</string>
     </property>
     <property name="text">
      <string>PushButton</string>
