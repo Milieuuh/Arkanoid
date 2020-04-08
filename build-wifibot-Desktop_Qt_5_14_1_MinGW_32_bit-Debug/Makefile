@@ -14,13 +14,13 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\wifibot -I. -ID:\qt-creator\5.14.1\mingw73_32\include -ID:\qt-creator\5.14.1\mingw73_32\include\QtWidgets -ID:\qt-creator\5.14.1\mingw73_32\include\QtGui -ID:\qt-creator\5.14.1\mingw73_32\include\QtANGLE -ID:\qt-creator\5.14.1\mingw73_32\include\QtCore -I. -I. -ID:\qt-creator\5.14.1\mingw73_32\mkspecs\win32-g++ 
+INCPATH       = -I..\wifibot -I. -ID:\qt-creator\5.14.1\mingw73_32\include -ID:\qt-creator\5.14.1\mingw73_32\include\QtWidgets -ID:\qt-creator\5.14.1\mingw73_32\include\QtGui -ID:\qt-creator\5.14.1\mingw73_32\include\QtANGLE -ID:\qt-creator\5.14.1\mingw73_32\include\QtNetwork -ID:\qt-creator\5.14.1\mingw73_32\include\QtCore -I. -I. -ID:\qt-creator\5.14.1\mingw73_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
-LIBS        =        D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Widgets.a D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Gui.a D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Core.a  -lmingw32 D:\qt-creator\5.14.1\mingw73_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Widgets.a D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Gui.a D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Network.a D:\qt-creator\5.14.1\mingw73_32\lib\libQt5Core.a  -lmingw32 D:\qt-creator\5.14.1\mingw73_32\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-win32\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = D:\qt-creator\5.14.1\mingw73_32\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -52,13 +52,19 @@ OBJECTS_DIR   = .
 ####### Files
 
 SOURCES       = ..\wifibot\main.cpp \
-		..\wifibot\mainwindow.cpp moc_mainwindow.cpp
+		..\wifibot\mainwindow.cpp \
+		..\wifibot\myrobot.cpp moc_mainwindow.cpp \
+		moc_myrobot.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		myrobot.o \
+		moc_mainwindow.o \
+		moc_myrobot.o
 
-DIST          =  ..\wifibot\mainwindow.h ..\wifibot\main.cpp \
-		..\wifibot\mainwindow.cpp
+DIST          =  ..\wifibot\mainwindow.h \
+		..\wifibot\myrobot.h ..\wifibot\main.cpp \
+		..\wifibot\mainwindow.cpp \
+		..\wifibot\myrobot.cpp
 QMAKE_TARGET  = wifibot
 DESTDIR        =  #avoid trailing-slash linebreak
 TARGET         = wifibot.exe
@@ -69,7 +75,7 @@ DESTDIR_TARGET = wifibot.exe
 first: all
 all: Makefile  wifibot.exe
 
-wifibot.exe: D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Widgets.a D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Gui.a D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Core.a D:/qt-creator/5.14.1/mingw73_32/lib/libqtmain.a ui_mainwindow.h $(OBJECTS) 
+wifibot.exe: D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Widgets.a D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Gui.a D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Network.a D:/qt-creator/5.14.1/mingw73_32/lib/libQt5Core.a D:/qt-creator/5.14.1/mingw73_32/lib/libqtmain.a ui_mainwindow.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 Makefile: ../wifibot/wifibot.pro D:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g++/qmake.conf D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/spec_pre.prf \
@@ -248,6 +254,7 @@ Makefile: ../wifibot/wifibot.pro D:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g
 		D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/qt_config.prf \
 		D:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/toolchain.prf \
 		D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/default_pre.prf \
@@ -273,6 +280,7 @@ Makefile: ../wifibot/wifibot.pro D:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g
 		../wifibot/wifibot.pro \
 		D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Widgets.prl \
 		D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Gui.prl \
+		D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Network.prl \
 		D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Core.prl \
 		D:/qt-creator/5.14.1/mingw73_32/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\wifibot\wifibot.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -452,6 +460,7 @@ D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/qt_functions.prf:
 D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/qt_config.prf:
 D:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g++/qmake.conf:
 D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/exclusive_builds.prf:
 D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/toolchain.prf:
 D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/default_pre.prf:
@@ -477,6 +486,7 @@ D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/lex.prf:
 ../wifibot/wifibot.pro:
 D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Widgets.prl:
 D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Gui.prl:
+D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Network.prl:
 D:/qt-creator/5.14.1/mingw73_32/lib/Qt5Core.prl:
 D:/qt-creator/5.14.1/mingw73_32/lib/qtmain.prl:
 qmake: FORCE
@@ -485,10 +495,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) wifibot.zip $(SOURCES) $(DIST) ..\wifibot\wifibot.pro D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\spec_pre.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\qdevice.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\device_config.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\sanitize.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\gcc-base.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\g++-base.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\angle.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\windows-vulkan.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\g++-win32.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\windows-desktop.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\qconfig.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3d.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3drender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qt_functions.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qt_config.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\win32-g++\qmake.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\spec_post.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\exclusive_builds.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\toolchain.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\default_pre.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\default_pre.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\resolve_config.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\default_post.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qml_debug.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\precompile_header.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\warn_on.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qt.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\resources_functions.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\resources.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\moc.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\opengl.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\uic.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qmake_use.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\file_copies.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\windows.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\testcase_targets.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\exceptions.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\yacc.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\lex.prf ..\wifibot\wifibot.pro D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Widgets.prl D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Gui.prl D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Core.prl D:\qt-creator\5.14.1\mingw73_32\lib\qtmain.prl    D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\data\dummy.cpp ..\wifibot\mainwindow.h  ..\wifibot\main.cpp ..\wifibot\mainwindow.cpp ..\wifibot\mainwindow.ui    
+	$(ZIP) wifibot.zip $(SOURCES) $(DIST) ..\wifibot\wifibot.pro D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\spec_pre.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\qdevice.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\device_config.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\sanitize.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\gcc-base.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\g++-base.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\angle.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\windows-vulkan.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\g++-win32.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\common\windows-desktop.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\qconfig.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3d.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3drender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qt_functions.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qt_config.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\win32-g++\qmake.conf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\exclusive_builds.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\toolchain.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\default_pre.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\default_pre.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\resolve_config.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\default_post.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qml_debug.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\precompile_header.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\warn_on.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qt.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\resources_functions.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\resources.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\moc.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\opengl.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\uic.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\qmake_use.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\file_copies.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\win32\windows.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\testcase_targets.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\exceptions.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\yacc.prf D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\lex.prf ..\wifibot\wifibot.pro D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Widgets.prl D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Gui.prl D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Network.prl D:\qt-creator\5.14.1\mingw73_32\lib\Qt5Core.prl D:\qt-creator\5.14.1\mingw73_32\lib\qtmain.prl    D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\data\dummy.cpp ..\wifibot\mainwindow.h ..\wifibot\myrobot.h  ..\wifibot\main.cpp ..\wifibot\mainwindow.cpp ..\wifibot\myrobot.cpp ..\wifibot\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) main.o mainwindow.o moc_mainwindow.o
+	-$(DEL_FILE) main.o mainwindow.o myrobot.o moc_mainwindow.o moc_myrobot.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -513,9 +523,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: D:/qt-creator/5.14.1/mingw73_32/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -Wextra -Wextra -dM -E -o moc_predefs.h D:\qt-creator\5.14.1\mingw73_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_myrobot.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_myrobot.cpp
 moc_mainwindow.cpp: ../wifibot/mainwindow.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QMainWindow \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qmainwindow.h \
@@ -624,9 +634,93 @@ moc_mainwindow.cpp: ../wifibot/mainwindow.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qtouchdevice.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qtabwidget.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qicon.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QPushButton \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qabstractbutton.h \
 		moc_predefs.h \
 		D:/qt-creator/5.14.1/mingw73_32/bin/moc.exe
-	D:\qt-creator\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/Emilie Genton/Documents/GitHub/Wifibot/build-wifibot-Desktop_Qt_5_14_1_MinGW_32_bit-Debug/moc_predefs.h" -ID:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/Emilie Genton/Documents/GitHub/Wifibot/wifibot" -ID:/qt-creator/5.14.1/mingw73_32/include -ID:/qt-creator/5.14.1/mingw73_32/include/QtWidgets -ID:/qt-creator/5.14.1/mingw73_32/include/QtGui -ID:/qt-creator/5.14.1/mingw73_32/include/QtANGLE -ID:/qt-creator/5.14.1/mingw73_32/include/QtCore -I. -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/qt-creator/Tools/mingw730_32/i686-w64-mingw32/include ..\wifibot\mainwindow.h -o moc_mainwindow.cpp
+	D:\qt-creator\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/Emilie Genton/Documents/GitHub/Wifibot/build-wifibot-Desktop_Qt_5_14_1_MinGW_32_bit-Debug/moc_predefs.h" -ID:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/Emilie Genton/Documents/GitHub/Wifibot/wifibot" -ID:/qt-creator/5.14.1/mingw73_32/include -ID:/qt-creator/5.14.1/mingw73_32/include/QtWidgets -ID:/qt-creator/5.14.1/mingw73_32/include/QtGui -ID:/qt-creator/5.14.1/mingw73_32/include/QtANGLE -ID:/qt-creator/5.14.1/mingw73_32/include/QtNetwork -ID:/qt-creator/5.14.1/mingw73_32/include/QtCore -I. -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/qt-creator/Tools/mingw730_32/i686-w64-mingw32/include ..\wifibot\mainwindow.h -o moc_mainwindow.cpp
+
+moc_myrobot.cpp: ../wifibot/myrobot.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QObject \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobject.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobjectdefs.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qnamespace.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qglobal.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qconfig.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtcore-config.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsystemdetection.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qprocessordetection.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcompilerdetection.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtypeinfo.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsysinfo.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qlogging.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qflags.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbasicatomic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qgenericatomic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic_msvc.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qglobalstatic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qmutex.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qnumeric.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qversiontagging.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstring.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qchar.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbytearray.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qrefcount.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qarraydata.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringliteral.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringalgorithms.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringview.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringbuilder.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qlist.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qalgorithms.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qiterator.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qhashfunctions.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qpair.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qvector.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qpoint.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbytearraylist.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringlist.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qregexp.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringmatcher.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcoreevent.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qscopedpointer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qmetatype.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qvarlengtharray.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcontainerfwd.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobject_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/QTcpSocket \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qtcpsocket.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qtnetworkglobal.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qtnetwork-config.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qabstractsocket.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qiodevice.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qdebug.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qhash.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qmap.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtextstream.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qlocale.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qvariant.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qshareddata.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qset.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcontiguouscache.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsharedpointer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/QAbstractSocket \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QDebug \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QTimer \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtimer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbasictimer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QMutex \
+		moc_predefs.h \
+		D:/qt-creator/5.14.1/mingw73_32/bin/moc.exe
+	D:\qt-creator\5.14.1\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/Emilie Genton/Documents/GitHub/Wifibot/build-wifibot-Desktop_Qt_5_14_1_MinGW_32_bit-Debug/moc_predefs.h" -ID:/qt-creator/5.14.1/mingw73_32/mkspecs/win32-g++ -I"C:/Users/Emilie Genton/Documents/GitHub/Wifibot/wifibot" -ID:/qt-creator/5.14.1/mingw73_32/include -ID:/qt-creator/5.14.1/mingw73_32/include/QtWidgets -ID:/qt-creator/5.14.1/mingw73_32/include/QtGui -ID:/qt-creator/5.14.1/mingw73_32/include/QtANGLE -ID:/qt-creator/5.14.1/mingw73_32/include/QtNetwork -ID:/qt-creator/5.14.1/mingw73_32/include/QtCore -I. -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/qt-creator/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/qt-creator/Tools/mingw730_32/i686-w64-mingw32/include ..\wifibot\myrobot.h -o moc_myrobot.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -759,6 +853,9 @@ main.o: ../wifibot/main.cpp ../wifibot/mainwindow.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qtouchdevice.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qtabwidget.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qicon.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QPushButton \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qabstractbutton.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QApplication \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qapplication.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcoreapplication.h \
@@ -876,11 +973,115 @@ mainwindow.o: ../wifibot/mainwindow.cpp ../wifibot/mainwindow.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qtouchdevice.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qtabwidget.h \
 		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QPushButton \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		ui_mainwindow.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QVariant \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QApplication \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qapplication.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcoreapplication.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qeventloop.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qdesktopwidget.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qguiapplication.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtGui/qinputmethod.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QLabel \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qlabel.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qframe.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QMenuBar \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qmenubar.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qaction.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QStatusBar \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/qstatusbar.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ..\wifibot\mainwindow.cpp
+
+myrobot.o: ../wifibot/myrobot.cpp ../wifibot/myrobot.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QObject \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobject.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobjectdefs.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qnamespace.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qglobal.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qconfig-bootstrapped.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qconfig.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtcore-config.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsystemdetection.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qprocessordetection.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcompilerdetection.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtypeinfo.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsysinfo.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qlogging.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qflags.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbasicatomic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic_bootstrap.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qgenericatomic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic_cxx11.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qatomic_msvc.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qglobalstatic.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qmutex.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qnumeric.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qversiontagging.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobjectdefs_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstring.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qchar.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbytearray.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qrefcount.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qarraydata.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringliteral.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringalgorithms.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringview.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringbuilder.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qlist.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qalgorithms.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qiterator.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qhashfunctions.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qpair.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qvector.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcontainertools_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qpoint.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbytearraylist.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringlist.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qregexp.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qstringmatcher.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcoreevent.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qscopedpointer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qmetatype.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qvarlengtharray.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcontainerfwd.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qobject_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/QTcpSocket \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qtcpsocket.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qtnetworkglobal.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qtnetwork-config.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/qabstractsocket.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qiodevice.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qdebug.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qhash.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qmap.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtextstream.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qlocale.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qvariant.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qshareddata.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qset.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qcontiguouscache.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsharedpointer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qsharedpointer_impl.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtNetwork/QAbstractSocket \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QDebug \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QTimer \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qtimer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/qbasictimer.h \
+		D:/qt-creator/5.14.1/mingw73_32/include/QtCore/QMutex
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myrobot.o ..\wifibot\myrobot.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_myrobot.o: moc_myrobot.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_myrobot.o moc_myrobot.cpp
 
 ####### Install
 
