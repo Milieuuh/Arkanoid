@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    myrobot.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    myrobot.h
 
 FORMS += \
     mainwindow.ui
