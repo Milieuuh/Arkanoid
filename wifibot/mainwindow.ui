@@ -128,7 +128,7 @@ color:#fff;</string>
    <widget class="QPushButton" name="btnUI_haut">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>690</x>
       <y>130</y>
       <width>81</width>
       <height>91</height>
@@ -139,6 +139,63 @@ color:#fff;</string>
 border-right-width: 50px;
 border-left-width: 50px;
 border-bottom: 100px solid blue;</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnUI_haut_2">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>250</y>
+      <width>91</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0 solid rgb(47, 47, 47);
+border-top-width: 50px;
+border-left: 100px solid blue;
+border-bottom-width: 50px;</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnUI_haut_3">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>240</y>
+      <width>91</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0 solid rgb(47, 47, 47);
+border-top-width: 50px;
+border-right: 100px solid blue;
+border-bottom-width: 50px;</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnUI_haut_4">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>360</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0 solid rgb(47, 47, 47);
+border-right-width: 50px;
+border-left-width: 50px;
+border-top: 100px solid blue;</string>
     </property>
     <property name="text">
      <string>PushButton</string>
