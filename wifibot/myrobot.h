@@ -8,10 +8,10 @@
 #include <QTimer>
 #include <QMutex>
 
-class MyRobot : public QObject {
+class MyRobot : public QObject{
     Q_OBJECT
 public:
-    explicit MyTcpClient(QObject *parent = 0);
+    explicit MyRobot(QObject *parent = 0);
     void doConnect();
     void disConnect();
     QByteArray DataToSend;
