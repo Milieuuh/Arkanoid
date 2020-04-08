@@ -29,6 +29,7 @@ public:
     QLabel *label;
     QLabel *label_2;
     QPushButton *btnUI_Start;
+    QPushButton *btnUI_haut;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
 
@@ -64,9 +65,22 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("background-color: white;"));
         btnUI_Start = new QPushButton(centralwidget);
         btnUI_Start->setObjectName(QString::fromUtf8("btnUI_Start"));
-        btnUI_Start->setGeometry(QRect(390, 280, 93, 28));
+        btnUI_Start->setGeometry(QRect(690, 240, 100, 100));
+        btnUI_Start->setMaximumSize(QSize(100, 100));
         btnUI_Start->setMouseTracking(false);
         btnUI_Start->setFocusPolicy(Qt::ClickFocus);
+        btnUI_Start->setStyleSheet(QString::fromUtf8("background:#cc0000;\n"
+"font:bold 20px Arial;\n"
+"border-radius:50px;\n"
+"border:none;\n"
+"color:#fff;"));
+        btnUI_haut = new QPushButton(centralwidget);
+        btnUI_haut->setObjectName(QString::fromUtf8("btnUI_haut"));
+        btnUI_haut->setGeometry(QRect(700, 130, 81, 91));
+        btnUI_haut->setStyleSheet(QString::fromUtf8("border: 0 solid rgb(47, 47, 47);\n"
+"border-right-width: 50px;\n"
+"border-left-width: 50px;\n"
+"border-bottom: 100px solid blue;"));
         MainWindow->setCentralWidget(centralwidget);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -89,7 +103,8 @@ public:
         btnUI_resume->setText(QCoreApplication::translate("MainWindow", "RESUME", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "WIFIBOT", nullptr));
         label_2->setText(QString());
-        btnUI_Start->setText(QCoreApplication::translate("MainWindow", "Start", nullptr));
+        btnUI_Start->setText(QCoreApplication::translate("MainWindow", "START", nullptr));
+        btnUI_haut->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

@@ -96,7 +96,7 @@ font-size:40px; </string>
    <widget class="QPushButton" name="btnUI_Start">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>690</x>
       <y>240</y>
       <width>100</width>
       <height>100</height>
@@ -123,6 +123,25 @@ color:#fff;</string>
     </property>
     <property name="text">
      <string>START</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnUI_haut">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>130</y>
+      <width>81</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0 solid rgb(47, 47, 47);
+border-right-width: 50px;
+border-left-width: 50px;
+border-bottom: 100px solid blue;</string>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
     </property>
    </widget>
   </widget>
