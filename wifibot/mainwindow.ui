@@ -93,6 +93,38 @@ font-size:40px; </string>
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnUI_Start">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>240</y>
+      <width>100</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>100</height>
+     </size>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:#cc0000;
+font:bold 20px Arial;
+border-radius:50px;
+border:none;
+color:#fff;</string>
+    </property>
+    <property name="text">
+     <string>START</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">

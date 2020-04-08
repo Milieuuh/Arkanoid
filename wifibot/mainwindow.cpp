@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QLineEdit>
+#include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -29,4 +32,12 @@ void MainWindow::graphismeBouton(QPushButton* b)
 void MainWindow::on_btnUI_quitter_clicked()
 {
     this->close();
+
 }
+
+
+void MainWindow::on_btnStart_clicked()
+{
+
+}
+

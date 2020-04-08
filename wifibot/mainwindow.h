@@ -21,6 +21,10 @@ public:
 private slots:
     void on_btnUI_quitter_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_btnStart_clicked();
+
 private:
     Ui::MainWindow *ui;
 
