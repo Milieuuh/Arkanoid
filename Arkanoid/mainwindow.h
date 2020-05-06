@@ -7,6 +7,7 @@
 #include "balle.h"
 #include "mur.h"
 #include "plateforme.h"
+#include "brique.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,7 @@ public:
     ~MainWindow();
 
     void progressAnimation();
+    void creationBrique();
 
 private:
     Ui::MainWindow *ui;
@@ -32,5 +34,6 @@ private:
     Mur* _murGauche;
     Mur* _murDroit;
     Mur* _murHaut;
+    Brique* _brique;
 };
 #endif // MAINWINDOW_H

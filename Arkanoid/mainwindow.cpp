@@ -30,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     _scene.addItem(_platerforme);
 
     _platerforme->grabKeyboard();
+
+    this->creationBrique();
+    this->progressAnimation();
 }
 
 MainWindow::~MainWindow()
@@ -41,5 +44,18 @@ void MainWindow::progressAnimation()
 {
     _animationTimer.setInterval(1000);
     _balle->advance();
+}
+
+void MainWindow::creationBrique()
+{
+    for(int i=0; i<5; i++)
+    {
+        for(int j=0; j<5; j++)
+        {
+            _brique = new Brique(0,0,30);
+            _brique->setPos(100+i*100, j*100+50);
+            _scene.addItem(_brique);
+        }
+    }
 }
 
