@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QImage>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(&_scene);
-    ui->graphicsView->setBackgroundBrush(QImage("fond.png"));
+    ui->graphicsView->setBackgroundBrush(QImage("image/fond.png"));
 }
 
 MainWindow::~MainWindow()
