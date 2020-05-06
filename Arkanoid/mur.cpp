@@ -1,6 +1,7 @@
 #include "mur.h"
 
-Mur::Mur()
+Mur::Mur(double x=0, double y=0, double largeur=50, double longueur=50, int type=1)
+    :_rectangleDelimitant(x,y, largeur, longueur), _type(type)
 {
 
 }
