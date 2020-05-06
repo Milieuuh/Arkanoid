@@ -2,12 +2,21 @@
 #define BALLE_H
 
 #include <QGraphicsItem>
+#include <QPainter>
 
-
-class balle : QGraphicsItem
+class balle : public QGraphicsItem
 {
 public:
-    balle();
+    balle(double x=0, double y=0, double size=20,double vitesse=3,double directionBalle=0.4);
+
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+private:
+    QRectF _contourCercle;
+    int _type;
+    double _vitesse;
+    double _directionBalle;
+
 };
 
 #endif // BALLE_H
