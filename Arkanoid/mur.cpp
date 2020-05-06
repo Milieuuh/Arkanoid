@@ -1,16 +1,11 @@
 #include "mur.h"
 
-Mur::Mur()
+Mur::Mur(double x, double y, double largeur, double longueur, int type):_rectangleDelimitant(x,y,largeur,longueur),_type(type)
 {
 
 }
 
-Mur::Mur(double x, double y, double largeur, double longueur, int type):_rectangleDelimitant(x=0,y=0,largeur=50,longueur=50),_type(type=1)
-{
-
-}
-
-QRectF Mur::getRectDelimitant() const
+QRectF Mur::boundingRect() const
 {
     return _rectangleDelimitant;
 }

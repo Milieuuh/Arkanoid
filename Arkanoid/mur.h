@@ -7,9 +7,8 @@
 class Mur : public QGraphicsItem
 {
     public:
-        Mur();
-        Mur(double x, double y, double largeur, double longueur, int type);
-        QRectF getRectDelimitant() const;
+        Mur(double x=0, double y=0, double largeur=50, double longueur=50, int type=1);
+        QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     private:
