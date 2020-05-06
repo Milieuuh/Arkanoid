@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <QTimer>
 #include "balle.h"
 #include "mur.h"
 #include "plateforme.h"
@@ -20,11 +21,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void animation();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene _scene;
     Mur* _mur;
     balle* _balle;
     Plateforme* _platerforme;
+    QTimer _animationTimer;
 };
 #endif // MAINWINDOW_H
