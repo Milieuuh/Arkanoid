@@ -12,16 +12,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(&_scene);
     ui->graphicsView->setBackgroundBrush(QImage("image/fond.png"));
 
-    //Construction du mur
-    _mur= new Mur(0,0,100,50,1);
-    _scene.addItem(_mur);
+    //Construction des murs
+    _murGauche= new Mur(0,0,10,800,0);
+    _murDroit=new Mur(620,0,10,800,0);
+    _murHaut=new Mur(0,0,630,10,0);
+
+    _scene.addItem(_murGauche);
+    _scene.addItem(_murDroit);
+    _scene.addItem(_murHaut);
 
     //Construction de la balle
-    _balle=new balle(0,0,20,3,0.4);
+    _balle=new balle(310,780,20,3,0.4);
     _scene.addItem(_balle);
 
     //Plateforme
-    _platerforme= new Plateforme(0,0,60,30);
+    _platerforme= new Plateforme(290,800,60,15);
     _scene.addItem(_platerforme);
 
     _platerforme->grabKeyboard();

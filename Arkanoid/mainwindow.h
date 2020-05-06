@@ -26,9 +26,11 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene _scene;
-    Mur* _mur;
     balle* _balle;
     Plateforme* _platerforme;
     QTimer _animationTimer;
+    Mur* _murGauche;
+    Mur* _murDroit;
+    Mur* _murHaut;
 };
 #endif // MAINWINDOW_H
