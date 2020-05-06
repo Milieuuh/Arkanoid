@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(&_scene);
-    ui->graphicsView->setBackgroundBrush(QImage("image/fond.png"));
+    ui->graphicsView->setBackgroundBrush(QImage("fond2.jpg"));
 
     //Construction des murs
     _murGauche= new Mur(0,0,10,800,0);
