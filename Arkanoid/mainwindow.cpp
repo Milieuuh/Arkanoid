@@ -37,9 +37,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::animation()
+void MainWindow::progressAnimation()
 {
     _animationTimer.setInterval(1000);
-    _balle->avancer();
+    _balle->advance();
 }
 

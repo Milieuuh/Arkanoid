@@ -21,7 +21,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void animation();
+    void progressAnimation();
 
 private:
     Ui::MainWindow *ui;

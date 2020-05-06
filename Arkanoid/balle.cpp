@@ -16,7 +16,7 @@ void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
    painter->drawEllipse(_contourCercle);
 }
 
-void balle::avancer()
+void balle::advance()
 {
  this->moveBy(_vitesse*qCos(_directionBalle),_vitesse*qSin(_directionBalle));
 }
