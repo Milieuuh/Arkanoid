@@ -7,10 +7,11 @@ balle::balle(double x,double y, double taille, double vitesse, double directionB
 
 QRectF balle::boundingRect() const
 {
-
+    return _contourCercle;
 }
 
 void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-
+   painter->setBrush(Qt::black);
+   painter->drawEllipse(_contourCercle);
 }
