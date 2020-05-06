@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Construction des murs
     _murGauche= new Mur(0,0,10,800,0);
     _murDroit=new Mur(620,0,10,800,0);
-    _murHaut=new Mur(0,0,630,10,0);
+    _murHaut=new Mur(0,-35,630,35,0);
 
     _scene.addItem(_murGauche);
     _scene.addItem(_murDroit);
