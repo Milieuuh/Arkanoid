@@ -19,6 +19,12 @@ MainWindow::MainWindow(QWidget *parent)
     //Construction de la balle
     _balle=new balle(0,0,20,3,0.4);
     _scene.addItem(_balle);
+
+    //Plateforme
+    _platerforme= new Plateforme(0,0,60,30);
+    _scene.addItem(_platerforme);
+
+    _platerforme->grabKeyboard();
 }
 
 MainWindow::~MainWindow()

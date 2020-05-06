@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include "balle.h"
 #include "mur.h"
+#include "plateforme.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -24,5 +25,6 @@ private:
     QGraphicsScene _scene;
     Mur* _mur;
     balle* _balle;
+    Plateforme* _platerforme;
 };
 #endif // MAINWINDOW_H
