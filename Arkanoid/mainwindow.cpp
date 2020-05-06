@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "mur.h"
+#include "balle.h"
 #include <QImage>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -12,8 +13,12 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setBackgroundBrush(QImage("image/fond.png"));
 
     //Construction du mur
-    Mur* monMur= new Mur(0,0,100,50,1);
-    _scene.addItem(monMur);
+    _mur= new Mur(0,0,100,50,1);
+    _scene.addItem(_mur);
+
+    //Construction de la balle
+    _balle=new balle(0,0,20,3,0.4);
+    _scene.addItem(_balle);
 }
 
 MainWindow::~MainWindow()
