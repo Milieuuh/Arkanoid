@@ -1,6 +1,6 @@
 #include "brique.h"
 
-Brique::Brique(double largeur, double hauteur, double size, int type): _brique(largeur, hauteur, size, size), _type(type)
+Brique::Brique(double x, double y, double largeur, double hauteur, int type): _brique(x, y, largeur, hauteur), _type(type)
 {
     _vie=_type+1;
 }

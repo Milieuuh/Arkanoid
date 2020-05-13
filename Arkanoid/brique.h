@@ -8,7 +8,7 @@
 class Brique : public QGraphicsItem
 {
     public:
-        Brique(double largeur=0, double hauteur=0, double size=20,int type=0);
+        Brique(double x, double y, double largeur=60, double hauteur=30, int type=0);
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
         int estTouchee();
