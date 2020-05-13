@@ -29,9 +29,11 @@ MainWindow::MainWindow(QWidget *parent)
     _platerforme= new Plateforme(290,800,60,15);
     _scene.addItem(_platerforme);
 
-    _platerforme->grabKeyboard();
+
 
     this->creationBrique();
+
+    this->grabKeyboard();
     this->progressAnimation();
 }
 
@@ -44,6 +46,10 @@ void MainWindow::progressAnimation()
 {
     _animationTimer.setInterval(1000);
     _balle->advance();
+    if(_scene.collidingItems().isEmpty()==false)
+    {
+        _balle->computeRebound(_scene.collidingItems(_balle).first());
+    }
 }
 
 void MainWindow::creationBrique()
