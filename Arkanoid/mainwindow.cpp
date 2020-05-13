@@ -46,7 +46,7 @@ void MainWindow::progressAnimation()
 {
     _animationTimer.setInterval(1000);
     _balle->advance();
-    if(_scene.collidingItems().isEmpty()==false)
+    if(_scene.collidingItems(_balle).isEmpty()==false)
     {
         _balle->computeRebound(_scene.collidingItems(_balle).first());
     }
