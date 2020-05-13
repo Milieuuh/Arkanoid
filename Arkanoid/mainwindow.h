@@ -8,6 +8,7 @@
 #include "mur.h"
 #include "plateforme.h"
 #include "brique.h"
+#include <QKeyEvent>
 
 
 QT_BEGIN_NAMESPACE
@@ -24,6 +25,7 @@ public:
 
     void progressAnimation();
     void creationBrique();
+    void keyPressEvent(QKeyEvent *event);
 
 private:
     Ui::MainWindow *ui;
