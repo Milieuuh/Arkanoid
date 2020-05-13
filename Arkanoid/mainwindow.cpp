@@ -70,27 +70,26 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     switch(event->key())
     {
         case Qt::Key_Q:
-            if(_platerforme->pos().rx()>10)
+            if(_platerforme->pos().x()>-280)
             {
                 _platerforme->moveBy(-10,0);
             }
-
             break;
         case Qt::Key_D:
-            if(_platerforme->pos().rx()<538)
+            if(_platerforme->pos().x()<270)
             {
                 _platerforme->moveBy(10,0);
             }
 
             break;
         case Qt::Key_Right:
-            if(_platerforme->pos().rx()<538)
+            if(_platerforme->pos().x()<270)
             {
                 _platerforme->moveBy(10,0);
             }
             break;
         case Qt::Key_Left:
-            if(_platerforme->pos().rx()>10)
+            if(_platerforme->pos().rx()>-280)
             {
                 _platerforme->moveBy(-10,0);
             }
