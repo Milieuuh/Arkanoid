@@ -37,5 +37,6 @@ private:
     Mur* _murDroit;
     Mur* _murHaut;
     Brique* _brique;
+    bool _balleEnMouvement;
 };
 #endif // MAINWINDOW_H

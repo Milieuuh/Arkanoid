@@ -12,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(&_scene);
     ui->graphicsView->setBackgroundBrush(QImage("fond2.jpg"));
 
+    //initialiser mouvement de la balle
+    _balleEnMouvement = false;
+
     //Construction des murs
     _murGauche= new Mur(0,0,10,800,0);
     _murDroit=new Mur(620,0,10,800,0);
@@ -73,12 +76,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             if(_platerforme->pos().x()>-280)
             {
                 _platerforme->moveBy(-10,0);
+                if(_balleEnMouvement==false)
+                {
+                    _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
+                }
             }
             break;
         case Qt::Key_D:
             if(_platerforme->pos().x()<270)
             {
                 _platerforme->moveBy(10,0);
+                if(_balleEnMouvement==false)
+                {
+                    _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
+                }
             }
 
             break;
@@ -86,12 +97,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             if(_platerforme->pos().x()<270)
             {
                 _platerforme->moveBy(10,0);
+                if(_balleEnMouvement==false)
+                {
+                    _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
+                }
             }
             break;
         case Qt::Key_Left:
             if(_platerforme->pos().rx()>-280)
             {
                 _platerforme->moveBy(-10,0);
+                if(_balleEnMouvement==false)
+                {
+                    _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
+                }
             }
             break;
          case Qt::Key_Space:
