@@ -17,18 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     balle.cpp \
-    brique.cpp \
     main.cpp \
-    mainwindow.cpp \
-    mur.cpp \
-    plateforme.cpp
+    mainwindow.cpp
 
 HEADERS += \
     balle.h \
-    brique.h \
-    mainwindow.h \
-    mur.h \
-    plateforme.h
+    mainwindow.h
 
 FORMS += \
     mainwindow.ui
