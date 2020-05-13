@@ -54,12 +54,12 @@ void MainWindow::progressAnimation()
 
 void MainWindow::creationBrique()
 {
-    for(int i=0; i<5; i++)
+    for(int i=0; i<8; i++)
     {
-        for(int j=0; j<5; j++)
+        for(int j=0; j<10; j++)
         {
-            _brique = new Brique(0,0,30);
-            _brique->setPos(100+i*100, j*100+50);
+            _brique = new Brique(0,0);
+            _brique->setPos(70+60*i, 50+j*30);
             _scene.addItem(_brique);
         }
     }
