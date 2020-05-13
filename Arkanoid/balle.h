@@ -14,6 +14,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     void advance();
+    void computeRebound(QGraphicsItem *item);
 
 private:
     QRectF _contourCercle;
