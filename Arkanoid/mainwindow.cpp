@@ -37,12 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->creationBalleVie();
     this->creationBrique();
 
-    this->grabKeyboard();
 
-    if(_balleEnMouvement==false)
-    {
-        this->lancementBalle();
-    }
+    this->grabKeyboard();
 
     //Animation de la balle
     connect(&_animationTimer, SIGNAL(timeout()),this,SLOT(progressAnimation()));
