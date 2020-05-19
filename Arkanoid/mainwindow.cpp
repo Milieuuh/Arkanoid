@@ -3,6 +3,8 @@
 #include "mur.h"
 #include "balle.h"
 #include <QImage>
+#include <QTimeLine>
+#include <QGraphicsItemAnimation>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -53,6 +55,7 @@ MainWindow::~MainWindow()
 void MainWindow::progressAnimation()
 {
      _balle->avance();
+     qInfo("yooooooooooooooooooooooooooooooooo");
 
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
@@ -158,5 +161,5 @@ void MainWindow::lancementBalle()
 {
     _balle->setDirectionBalle(4.5);
     _balleEnMouvement=true;
-    _animationTimer.start(10);
+     _animationTimer.start(10);
 }

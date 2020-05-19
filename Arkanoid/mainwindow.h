@@ -24,6 +24,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
     void progressAnimation();
     void creationBrique();
     void keyPressEvent(QKeyEvent *event);
