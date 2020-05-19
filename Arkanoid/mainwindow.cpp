@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //initialiser mouvement de la balle
     _balleEnMouvement = false;
+    _nbBalle=3;
 
     //Construction des murs
     _murGauche= new Mur(0,0,10,800);
@@ -37,7 +38,15 @@ MainWindow::MainWindow(QWidget *parent)
     this->creationBrique();
 
     this->grabKeyboard();
-    this->progressAnimation();
+
+    if(_balleEnMouvement==false)
+    {
+        this->lancementBalle();
+    }
+
+    //Animation de la balle
+    connect(&_animationTimer, SIGNAL(timeout()),this,SLOT(progressAnimation()));
+
 }
 
 MainWindow::~MainWindow()
@@ -47,12 +56,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::progressAnimation()
 {
-    _animationTimer.setInterval(1000);
-    _balle->advance();
+     _balle->advance();
+
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
         _balle->computeRebound(_scene.collidingItems(_balle).first());
     }
+
+    if(_balle->pos().x()>800)
+    {
+        /*
+        _balle->pos().x()=310;
+        _balle->pos().y()=780;*/
+        _vie++;
+        _nbBalle--;
+
+        if(_vie==3)
+        {
+            //fin de la partie à voir.
+        }
+    }
+
 }
 
 void MainWindow::creationBrique()
@@ -114,7 +138,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             }
             break;
          case Qt::Key_Space:
-                lancementBalle();
+                if(_balleEnMouvement==false)
+                {
+                    lancementBalle();
+                }
             break;
         default:
         break;
@@ -126,4 +153,5 @@ void MainWindow::lancementBalle()
 {
     _balle->setDirectionBalle(4.5);
     _balleEnMouvement=true;
+    _animationTimer.start(10);
 }

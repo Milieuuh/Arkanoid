@@ -9,6 +9,7 @@
 #include "plateforme.h"
 #include "brique.h"
 #include <QKeyEvent>
+#include <QGraphicsItem>
 
 
 QT_BEGIN_NAMESPACE
@@ -38,6 +39,8 @@ private:
     Mur* _murDroit;
     Mur* _murHaut;
     Brique* _brique;
-    bool _balleEnMouvement=false;
+    bool _balleEnMouvement;
+    int _vie=0;
+    int _nbBalle;
 };
 #endif // MAINWINDOW_H
