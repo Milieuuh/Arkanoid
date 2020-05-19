@@ -43,7 +43,7 @@ void balle::avance()
    this->moveBy(_vitesse*qCos(_directionBalle),_vitesse*qSin(_directionBalle));
 }
 
-void balle::computeRebound(QGraphicsItem *item)
+void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
 {
     QPointF positionObstacle = item->pos();
     QRectF typeObstacleGeometry = item->boundingRect();
@@ -57,6 +57,7 @@ void balle::computeRebound(QGraphicsItem *item)
         _directionBalle=4.5+3.14159;
         if(brique->estTouchee()==0)
         {
+            listeBrique.removeOne(brique);
             delete brique;
 
         }

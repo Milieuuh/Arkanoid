@@ -57,7 +57,7 @@ void MainWindow::progressAnimation()
      _balle->avance();
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
-        _balle->computeRebound(_scene.collidingItems(_balle).first());
+        _balle->computeRebound(_scene.collidingItems(_balle).first(), _listeBrique);
     }
 
     if(_balle->pos().y()>50)
@@ -86,10 +86,26 @@ void MainWindow::creationBrique()
     {
         for(int j=0; j<10; j++)
         {
-            _brique = new Brique(0,0);
+             int x=(int)rand()%3;
+            _brique = new Brique(0,0,60,30,x);
             _brique->setPos(70+60*i, 50+j*30);
             _scene.addItem(_brique);
+            _listeBrique.push_back(_brique);
         }
+    }
+}
+
+void MainWindow::regenererBriques()
+{
+
+    for(int i =0; i<_listeBrique.length(); i++)
+    {
+        _listeBrique.at(i)->hide();
+    }
+
+    for(int i =0; i<_listeBrique.length(); i++)
+    {
+        _listeBrique.at(i)->show();
     }
 }
 

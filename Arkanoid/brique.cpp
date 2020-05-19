@@ -7,8 +7,6 @@ Brique::Brique(double x, double y, double largeur, double hauteur, int type): _b
     // si "moyen", alors doit toucher 2 fois
     // si "difficile" alors 3 fois.
 
-    _type=  (int)rand()%3-1;
-
     if(_type==0)
     {
         _vie=1;
@@ -30,26 +28,29 @@ QRectF Brique::boundingRect() const
 
 void Brique::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    if(_type==0)
+    if(_vie==1 || _type==0)
     {
         painter->setBrush(Qt::green);
+        painter->drawRect(_brique);
     }
-    else if(_type==1)
+    else if(_vie==2 ||_type==1)
     {
 
         painter->setBrush(QColor(255, 175, 0));
+        painter->drawRect(_brique);
     }
-    else
+    else if(_vie==3 || _type==2)
     {
         painter->setBrush(Qt::darkRed);
+        painter->drawRect(_brique);
     }
 
-   painter->drawRect(_brique);
+
 }
 
 int Brique::estTouchee()
 {
-    return _vie--;
+    return this->_vie--;
 }
 
 int Brique::getVie()
@@ -66,3 +67,4 @@ void Brique::setType(int type)
 {
     _type=type;
 }
+

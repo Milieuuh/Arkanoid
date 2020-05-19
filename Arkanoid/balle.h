@@ -4,6 +4,7 @@
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QtMath>
+#include "brique.h"
 
 class balle : public QGraphicsItem
 {
@@ -14,7 +15,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     void avance();
-    void computeRebound(QGraphicsItem *item);
+    void computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique);
     void setDirectionBalle(double direction);
     void setTest(int test);
 
