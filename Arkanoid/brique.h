@@ -12,10 +12,13 @@ class Brique : public QGraphicsItem
         QRectF boundingRect() const;
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
         int estTouchee();
+        int getVie();
+        int getType();
+        void setType(int type);
 
     private:
         QRectF _brique;
-        int _type;
+        int _type;     //Correspond au type de la brique (difficile=2/Moyen=1/facile=0)
         int _vie;
 };
 
