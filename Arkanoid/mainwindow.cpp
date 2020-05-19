@@ -56,7 +56,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::progressAnimation()
 {
-     _balle->advance();
+     _balle->avance();
 
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {

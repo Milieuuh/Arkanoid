@@ -13,7 +13,7 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    void advance();
+    void avance();
     void computeRebound(QGraphicsItem *item);
     void setDirectionBalle(double direction);
 
