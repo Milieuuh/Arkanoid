@@ -65,8 +65,10 @@ void MainWindow::progressAnimation()
         _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
         _vie++;
         _nbBalle--;
-        _balleEnMouvement=false;
+        //_balleEnMouvement=false;
+        //met à jour le nb de balles
         this->creationBalleVie();
+
         if(_vie==3)
         {
             //this->close();
