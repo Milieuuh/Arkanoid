@@ -29,12 +29,11 @@ void balle::computeRebound(QGraphicsItem *item)
     QPointF position = this->pos();
     Brique* brique = dynamic_cast<Brique*>(item);
 
-    qInfo("Coucou");
-
     //détection des briques
     if(brique != NULL)
     {
         brique->estTouchee();
+        _directionBalle=4.5+3.14159;
         if(brique->estTouchee()==0)
         {
             delete brique;
@@ -46,14 +45,18 @@ void balle::computeRebound(QGraphicsItem *item)
     {
         _directionBalle=3.14159-_directionBalle;
     }
-    else if(position.x()<positionObstacle.x()+typeObstacleGeometry.width()-_contourCercle.width()/2)
-    {
-        _directionBalle=2*3.14159-_directionBalle;
-    }
     else
     {
-        _directionBalle=3.14159-_directionBalle;
+        if((position.x()<positionObstacle.x()+typeObstacleGeometry.width()-_contourCercle.width()/2))
+        {
+            _directionBalle=2*3.14159-_directionBalle;
+        }
+        else
+        {
+            _directionBalle=3.14159-_directionBalle;
+        }
     }
+
 
 }
 
