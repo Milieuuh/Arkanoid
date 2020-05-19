@@ -1,6 +1,6 @@
 #include "mur.h"
 
-Mur::Mur(double x, double y, double largeur, double longueur, int type):_rectangleDelimitant(x,y,largeur,longueur),_type(type)
+Mur::Mur(double x, double y, double largeur, double longueur):_rectangleDelimitant(x,y,largeur,longueur)
 {
 
 }
@@ -12,10 +12,6 @@ QRectF Mur::boundingRect() const
 
 void Mur::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    /*
-    QRectF rect(0,0,50,50);
-
-    _rectangleDelimitant =rect;*/
-       painter->setBrush(Qt::blue);
-       painter->drawRect(_rectangleDelimitant);
+    painter->setBrush(Qt::blue);
+    painter->drawRect(_rectangleDelimitant);
 }
