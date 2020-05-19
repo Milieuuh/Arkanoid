@@ -1,6 +1,6 @@
 #include "balle.h"
 
-balle::balle(double x,double y, double taille, double vitesse, double directionBalle):_contourCercle(x,y,taille,taille),_directionBalle(directionBalle)
+balle::balle(double x,double y, double taille, double vitesse, double directionBalle):_contourCercle(x,y,taille,taille),_vitesse(vitesse),_directionBalle(directionBalle)
 {
 
 }
@@ -18,7 +18,7 @@ void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 void balle::avance()
 {
- this->moveBy(_vitesse*qCos(_directionBalle),_vitesse*qSin(_directionBalle));
+   this->moveBy(_vitesse*qCos(_directionBalle),_vitesse*qSin(_directionBalle));
 }
 
 void balle::computeRebound(QGraphicsItem *item)

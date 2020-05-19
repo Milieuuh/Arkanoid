@@ -55,7 +55,6 @@ MainWindow::~MainWindow()
 void MainWindow::progressAnimation()
 {
      _balle->avance();
-     qInfo("yooooooooooooooooooooooooooooooooo");
 
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
