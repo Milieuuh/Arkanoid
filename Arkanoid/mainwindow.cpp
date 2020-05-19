@@ -60,7 +60,7 @@ void MainWindow::progressAnimation()
         _balle->computeRebound(_scene.collidingItems(_balle).first());
     }
 
-    if(_balle->pos().y()>10)
+    if(_balle->pos().y()>50)
     {
         _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
         _vie++;
