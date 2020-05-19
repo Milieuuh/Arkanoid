@@ -39,7 +39,12 @@ void balle::computeRebound(QGraphicsItem *item)
             delete brique;
 
         }
+        else
+        {
+            brique->setType(brique->getType()-1);
+        }
     }
+
 
     if(position.x()<positionObstacle.x())
     {

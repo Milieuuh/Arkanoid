@@ -57,18 +57,19 @@ void MainWindow::progressAnimation()
      _balle->avance();
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
-        qInfo("hello ? colliding objet");
         _balle->computeRebound(_scene.collidingItems(_balle).first());
     }
 
-    if(_balle->pos().x()>800)
+    if(_balle->pos().y()>10)
     {
         _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
         _vie++;
         _nbBalle--;
+        _balleEnMouvement=false;
         this->creationBalleVie();
         if(_vie==3)
         {
+            //this->close();
             //fin de la partie à voir.
         }
     }
