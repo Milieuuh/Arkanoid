@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     _scene.addItem(_platerforme);
 
 
-
+    this->creationBalleVie();
     this->creationBrique();
 
     this->grabKeyboard();
@@ -65,12 +65,10 @@ void MainWindow::progressAnimation()
 
     if(_balle->pos().x()>800)
     {
-        /*
-        _balle->pos().x()=310;
-        _balle->pos().y()=780;*/
+        _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
         _vie++;
         _nbBalle--;
-
+        this->creationBalleVie();
         if(_vie==3)
         {
             //fin de la partie à voir.
@@ -89,6 +87,16 @@ void MainWindow::creationBrique()
             _brique->setPos(70+60*i, 50+j*30);
             _scene.addItem(_brique);
         }
+    }
+}
+
+void MainWindow::creationBalleVie()
+{
+    for(int i=0; i<_nbBalle;i++)
+    {
+        _balleVie=new balle(0,0,20,3);
+        _balleVie->setPos(480+25*i,-28);
+        _scene.addItem(_balleVie);
     }
 }
 

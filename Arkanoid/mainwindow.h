@@ -28,11 +28,13 @@ public:
     void creationBrique();
     void keyPressEvent(QKeyEvent *event);
     void lancementBalle();
+    void creationBalleVie();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene _scene;
     balle* _balle;
+    balle* _balleVie;
     Plateforme* _platerforme;
     QTimer _animationTimer;
     Mur* _murGauche;
