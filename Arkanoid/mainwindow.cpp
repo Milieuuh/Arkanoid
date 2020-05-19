@@ -16,9 +16,9 @@ MainWindow::MainWindow(QWidget *parent)
     _balleEnMouvement = false;
 
     //Construction des murs
-    _murGauche= new Mur(0,0,10,800,0);
-    _murDroit=new Mur(620,0,10,800,0);
-    _murHaut=new Mur(0,-35,630,35,0);
+    _murGauche= new Mur(0,0,10,800);
+    _murDroit=new Mur(620,0,10,800);
+    _murHaut=new Mur(0,-35,630,35);
 
     _scene.addItem(_murGauche);
     _scene.addItem(_murDroit);
@@ -114,9 +114,16 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             }
             break;
          case Qt::Key_Space:
+                lancementBalle();
             break;
         default:
         break;
 
     }
+}
+
+void MainWindow::lancementBalle()
+{
+    _balle->setDirectionBalle(4.5);
+    _balleEnMouvement=true;
 }

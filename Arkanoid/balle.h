@@ -15,6 +15,7 @@ public:
 
     void advance();
     void computeRebound(QGraphicsItem *item);
+    void setDirectionBalle(double direction);
 
 private:
     QRectF _contourCercle;

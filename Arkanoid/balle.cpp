@@ -41,3 +41,8 @@ void balle::computeRebound(QGraphicsItem *item)
     }
 
 }
+
+void balle::setDirectionBalle(double direction)
+{
+    this->_directionBalle=direction;
+}

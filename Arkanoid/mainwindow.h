@@ -26,6 +26,7 @@ public:
     void progressAnimation();
     void creationBrique();
     void keyPressEvent(QKeyEvent *event);
+    void lancementBalle();
 
 private:
     Ui::MainWindow *ui;
@@ -37,6 +38,6 @@ private:
     Mur* _murDroit;
     Mur* _murHaut;
     Brique* _brique;
-    bool _balleEnMouvement;
+    bool _balleEnMouvement=false;
 };
 #endif // MAINWINDOW_H
