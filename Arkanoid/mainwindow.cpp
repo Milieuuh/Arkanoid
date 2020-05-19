@@ -79,6 +79,7 @@ void MainWindow::progressAnimation()
 
 void MainWindow::creationBrique()
 {
+    srand(time(0));
     for(int i=0; i<8; i++)
     {
         for(int j=0; j<10; j++)
