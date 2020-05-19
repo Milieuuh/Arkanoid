@@ -16,12 +16,14 @@ public:
     void avance();
     void computeRebound(QGraphicsItem *item);
     void setDirectionBalle(double direction);
+    void setTest(int test);
 
 private:
     QRectF _contourCercle;
     int _type;
     double _vitesse;
     double _directionBalle;
+    int _test=0;
 
 };
 

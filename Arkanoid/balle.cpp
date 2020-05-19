@@ -13,9 +13,30 @@ QRectF balle::boundingRect() const
 
 void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-   painter->setBrush(Qt::black);
-   painter->drawEllipse(_contourCercle);
+
+   if(_test==0)
+   {
+       painter->setBrush(Qt::black);
+       painter->drawEllipse(_contourCercle);
+   }
+   else if(_test==1)
+   {
+       painter->setBrush(Qt::white);
+       painter->drawEllipse(_contourCercle);
+   }
+   else
+   {
+       painter->setBrush(Qt::red);
+       painter->drawEllipse(_contourCercle);
+   }
 }
+
+void balle::setTest(int test)
+{
+    _test=test;
+}
+
+
 
 void balle::avance()
 {

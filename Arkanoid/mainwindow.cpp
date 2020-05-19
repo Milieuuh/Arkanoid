@@ -65,6 +65,7 @@ void MainWindow::progressAnimation()
         _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
         _vie++;
         _nbBalle--;
+
         //_balleEnMouvement=false;
         //met à jour le nb de balles
         this->creationBalleVie();
@@ -94,12 +95,31 @@ void MainWindow::creationBrique()
 
 void MainWindow::creationBalleVie()
 {
-    for(int i=0; i<_nbBalle;i++)
+    double pos=0;
+
+    if(_nbBalle>0)
     {
-        _balleVie=new balle(0,0,20,3);
-        _balleVie->setPos(480+25*i,-28);
-        _scene.addItem(_balleVie);
+        for(int i=0; i<_nbBalle;i++)
+        {
+             balle* _balleVie=new balle(0,0,20,3);
+             _balleVie->setTest(1);
+             pos=i;
+             _balleVie->setPos(480+25*i,-28);
+             _scene.addItem(_balleVie);
+        }
     }
+
+    if(_vie>0)
+    {
+        for(int i=pos; i<_vie;i++)
+        {
+            balle* _balleVie=new balle(0,0,20,3);
+            _balleVie->setTest(2);
+            _balleVie->setPos(480+25*i,-28);
+           _scene.addItem(_balleVie);
+        }
+    }
+
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
