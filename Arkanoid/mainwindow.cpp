@@ -55,9 +55,9 @@ MainWindow::~MainWindow()
 void MainWindow::progressAnimation()
 {
      _balle->avance();
-
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
+        qInfo("hello ? colliding objet");
         _balle->computeRebound(_scene.collidingItems(_balle).first());
     }
 
