@@ -64,6 +64,7 @@ void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
         else
         {
             brique->setType(brique->getType()-1);
+
         }
     }
 
