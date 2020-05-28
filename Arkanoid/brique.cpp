@@ -28,18 +28,18 @@ QRectF Brique::boundingRect() const
 
 void Brique::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    if(_vie==1 || _type==0)
+    if(_vie==1)
     {
         painter->setBrush(Qt::green);
         painter->drawRect(_brique);
     }
-    else if(_vie==2 ||_type==1)
+    else if(_vie==2)
     {
 
         painter->setBrush(QColor(255, 175, 0));
         painter->drawRect(_brique);
     }
-    else if(_vie==3 || _type==2)
+    else if(_vie==3)
     {
         painter->setBrush(Qt::darkRed);
         painter->drawRect(_brique);
