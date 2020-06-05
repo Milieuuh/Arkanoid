@@ -68,6 +68,7 @@ void FenetreJeu::progressAnimation()
 
         if(_vie==3)
         {
+            _finPartie.show();
             //this->close();
             //fin de la partie à voir.
         }

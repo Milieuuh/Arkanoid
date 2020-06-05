@@ -11,6 +11,8 @@
 #include <QKeyEvent>
 #include <QGraphicsItem>
 
+#include "fenetrefinpartie.h"
+
 namespace Ui {
 class FenetreJeu;
 }
@@ -47,6 +49,8 @@ private:
     int _nbBalle;
     int _nbBrique;
     QVector<Brique*> _listeBrique;
+
+    fenetreFinPartie _finPartie;
 };
 
 #endif // FENETREJEU_H
