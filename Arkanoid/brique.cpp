@@ -35,19 +35,19 @@ void Brique::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     if(_vie==1)
     {
         painter->setBrush(Qt::green);
-        painter->drawRect(this->boundingRect().toAlignedRect());
+        painter->drawRect(_brique);
 
     }
     else if(_vie==2)
     {
 
         painter->setBrush(QColor(255, 175, 0));
-        painter->drawRect(this->boundingRect().toAlignedRect());
+        painter->drawRect(_brique);
     }
     else if(_vie==3)
     {
         painter->setBrush(Qt::darkRed);
-        painter->drawRect(this->boundingRect().toAlignedRect());
+        painter->drawRect(_brique);
 
     }
     this->show();
