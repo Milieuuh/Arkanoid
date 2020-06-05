@@ -53,7 +53,7 @@ void FenetreJeu::progressAnimation()
      _balle->avance();
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
-        _balle->computeRebound(_scene.collidingItems(_balle).first(), _listeBrique);
+        _balle->computeRebound(_scene.collidingItems(_balle).first());
     }
 
     if(_balle->pos().y()>50)
@@ -86,24 +86,10 @@ void FenetreJeu::creationBrique()
             _brique = new Brique(0,0,60,30,x);
             _brique->setPos(70+60*i, 50+j*30);
             _scene.addItem(_brique);
-            _listeBrique.push_back(_brique);
         }
     }
 }
 
-void FenetreJeu::regenererBriques()
-{
-
-    for(int i =0; i<_listeBrique.length(); i++)
-    {
-        _listeBrique.at(i)->hide();
-    }
-
-    for(int i =0; i<_listeBrique.length(); i++)
-    {
-        _listeBrique.at(i)->show();
-    }
-}
 
 void FenetreJeu::creationBalleVie()
 {

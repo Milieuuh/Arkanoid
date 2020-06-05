@@ -45,7 +45,7 @@ void balle::avance()
    this->moveBy(_vitesse*qCos(_directionBalle),_vitesse*qSin(_directionBalle));
 }
 
-void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
+void balle::computeRebound(QGraphicsItem *item)
 {
     QPointF positionObstacle = item->pos();
     QRectF typeObstacleGeometry = item->boundingRect();

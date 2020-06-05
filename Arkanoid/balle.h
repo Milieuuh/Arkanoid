@@ -15,7 +15,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
     void avance();
-    void computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique);
+    void computeRebound(QGraphicsItem *item);
     void setDirectionBalle(double direction);
     void setTest(int test);
 

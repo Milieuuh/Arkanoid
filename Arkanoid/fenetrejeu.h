@@ -32,7 +32,6 @@ public slots:
     void keyPressEvent(QKeyEvent *event);
     void lancementBalle();
     void creationBalleVie();
-    void regenererBriques();
 
 
 private:
@@ -49,7 +48,6 @@ private:
     int _vie=0;
     int _nbBalle;
     int _nbBrique;
-    QVector<Brique*> _listeBrique;
 
     fenetreFinPartie _finPartie;
 };
