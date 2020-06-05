@@ -31,23 +31,26 @@ QRectF Brique::boundingRect() const
 
 void Brique::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    this->hide();
     if(_vie==1)
     {
         painter->setBrush(Qt::green);
-        painter->drawRect(QRectF(0, 0, 60, 30));
+        painter->drawRect(this->boundingRect().toAlignedRect());
+
     }
     else if(_vie==2)
     {
 
         painter->setBrush(QColor(255, 175, 0));
-        painter->drawRect(QRectF(this->_brique.x(), this->_brique.y(), 60, 30));
+        painter->drawRect(this->boundingRect().toAlignedRect());
     }
     else if(_vie==3)
     {
         painter->setBrush(Qt::darkRed);
-        painter->drawRect(QRectF(this->_brique.x(), this->_brique.y(), 60, 30));
-    }
+        painter->drawRect(this->boundingRect().toAlignedRect());
 
+    }
+    this->show();
 
 }
 
