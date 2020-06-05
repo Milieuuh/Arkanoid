@@ -61,15 +61,11 @@ void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
 
         _directionBalle=4.5+3.14159;
 
-        if(brique->estTouchee()==0)
+        if(brique->getVie()==0)
         {
             listeBrique.removeOne(brique);
             delete brique;
 
-        }
-        else
-        {
-            brique->setType(brique->getType()-1);
         }
 
     }
