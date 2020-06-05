@@ -1,5 +1,6 @@
 #include "fenetrejeu.h"
 #include "ui_fenetrejeu.h"
+#include <QVBoxLayout>
 
 FenetreJeu::FenetreJeu(QWidget *parent) :
     QWidget(parent),
@@ -36,6 +37,7 @@ FenetreJeu::FenetreJeu(QWidget *parent) :
 
 
     this->grabKeyboard();
+    afficherScore();
 
     //Animation de la balle
     connect(&_animationTimer, SIGNAL(timeout()),this,SLOT(progressAnimation()));
@@ -53,7 +55,8 @@ void FenetreJeu::progressAnimation()
      _balle->avance();
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
-        _balle->computeRebound(_scene.collidingItems(_balle).first());
+        _score =_balle->computeRebound(_scene.collidingItems(_balle).first(), _score);
+        afficherScore();
     }
 
     if(_balle->pos().y()>50)
@@ -181,4 +184,10 @@ void FenetreJeu::lancementBalle()
      _animationTimer.start(10);
 }
 
+void FenetreJeu::afficherScore()
+{
+    QString s = "SCORE : ";
+    s+=QString::number(_score);
+    this->ui->l_score->setText(s);
+}
 

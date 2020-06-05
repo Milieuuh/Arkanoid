@@ -26,6 +26,23 @@
     <string notr="true">background-color: rgb(149, 222, 232);</string>
    </property>
   </widget>
+  <widget class="QLabel" name="l_score">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>241</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 16pt &quot;Calibri&quot;;
+color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>SCORE :</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

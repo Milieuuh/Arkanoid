@@ -32,6 +32,7 @@ public slots:
     void keyPressEvent(QKeyEvent *event);
     void lancementBalle();
     void creationBalleVie();
+    void afficherScore();
 
 
 private:
@@ -48,6 +49,7 @@ private:
     int _vie=0;
     int _nbBalle;
     int _nbBrique;
+    int _score=0;
 
     fenetreFinPartie _finPartie;
 };

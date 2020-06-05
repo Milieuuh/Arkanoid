@@ -45,7 +45,7 @@ void balle::avance()
    this->moveBy(_vitesse*qCos(_directionBalle),_vitesse*qSin(_directionBalle));
 }
 
-void balle::computeRebound(QGraphicsItem *item)
+int balle::computeRebound(QGraphicsItem *item, int _score)
 {
     QPointF positionObstacle = item->pos();
     QRectF typeObstacleGeometry = item->boundingRect();
@@ -66,8 +66,7 @@ void balle::computeRebound(QGraphicsItem *item)
             delete brique;
         }
 
-
-
+        _score+=10;
     }
     else if(mur!=NULL)
     {
@@ -105,6 +104,7 @@ void balle::computeRebound(QGraphicsItem *item)
             _directionBalle=3.14159+_directionBalle;
         }
     }
+    return _score;
 
 }
 
