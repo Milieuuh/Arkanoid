@@ -1,4 +1,7 @@
 #include "brique.h"
+#include <QLabel>
+#include <QPixmap>
+#include <QGridLayout>
 
 Brique::Brique(double x, double y, double largeur, double hauteur, int type): _brique(x, y, largeur, hauteur), _type(type)
 {
