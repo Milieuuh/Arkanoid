@@ -25,19 +25,30 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(149, 222, 232);</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>0</y>
-     <width>211</width>
+     <x>30</x>
+     <y>30</y>
+     <width>421</width>
      <height>101</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>17</pointsize>
+     <family>13 Calibri</family>
+     <pointsize>40</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 40pt bold &quot;Calibri&quot;;
+color: rgb(204, 29, 29);</string>
    </property>
    <property name="text">
     <string>PARTIE FINIE</string>
@@ -46,16 +57,22 @@
   <widget class="QPushButton" name="recommencer">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>110</y>
-     <width>221</width>
-     <height>51</height>
+     <x>120</x>
+     <y>190</y>
+     <width>261</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <pointsize>13</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(63, 196, 98);
+border-style:none;
+border-radius:8px;
+color:#FFF;</string>
    </property>
    <property name="text">
     <string>RECOMMENCER</string>
@@ -64,16 +81,22 @@
   <widget class="QPushButton" name="quitter">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>190</y>
-     <width>221</width>
-     <height>51</height>
+     <x>120</x>
+     <y>300</y>
+     <width>261</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <pointsize>14</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(204, 29, 29);
+border-style:none;
+border-radius:8px;
+color:#FFF</string>
    </property>
    <property name="text">
     <string>QUITTER</string>
