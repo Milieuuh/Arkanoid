@@ -1,5 +1,7 @@
 #include "balle.h"
 #include "brique.h"
+#include "mur.h"
+#include "plateforme.h"
 
 balle::balle(double x,double y, double taille, double vitesse, double directionBalle):_contourCercle(x,y,taille,taille),_vitesse(vitesse),_directionBalle(directionBalle)
 {
@@ -49,12 +51,16 @@ void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
     QRectF typeObstacleGeometry = item->boundingRect();
     QPointF position = this->pos();
     Brique* brique = dynamic_cast<Brique*>(item);
+    Mur* mur = dynamic_cast<Mur*>(item);
+    Plateforme* plateforme = dynamic_cast<Plateforme*>(item);
 
     //détection des briques
     if(brique != NULL)
     {
         brique->estTouchee();
+
         _directionBalle=4.5+3.14159;
+
         if(brique->estTouchee()==0)
         {
             listeBrique.removeOne(brique);
@@ -64,27 +70,24 @@ void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
         else
         {
             brique->setType(brique->getType()-1);
-
         }
-    }
 
-
-    if(position.x()<positionObstacle.x())
-    {
-        _directionBalle=3.14159-_directionBalle;
     }
-    else
+    else if(mur!=NULL)
     {
-        if((position.x()<positionObstacle.x()+typeObstacleGeometry.width()-_contourCercle.width()/2))
+        _directionBalle=4.5+3.14159;
+    }
+    else if(plateforme!=NULL)
+    {
+        if(position.x()<positionObstacle.x())
         {
             _directionBalle=2*3.14159-_directionBalle;
         }
         else
         {
-            _directionBalle=3.14159-_directionBalle;
+            _directionBalle=3.14159+_directionBalle;
         }
     }
-
 
 }
 
