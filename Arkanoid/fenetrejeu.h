@@ -12,6 +12,7 @@
 #include <QGraphicsItem>
 
 #include "fenetrefinpartie.h"
+#include "fenetrefinpartie.h"
 
 namespace Ui {
 class FenetreJeu;

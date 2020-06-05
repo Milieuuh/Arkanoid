@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     balle.cpp \
     brique.cpp \
+    fenetrefinpartie.cpp \
     fenetrejeu.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,12 +28,14 @@ SOURCES += \
 HEADERS += \
     balle.h \
     brique.h \
+    fenetrefinpartie.h \
     fenetrejeu.h \
     mainwindow.h \
     mur.h \
     plateforme.h
 
 FORMS += \
+    fenetrefinpartie.ui \
     fenetrejeu.ui \
     mainwindow.ui
 

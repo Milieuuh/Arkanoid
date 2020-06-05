@@ -34,18 +34,18 @@ void Brique::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     if(_vie==1)
     {
         painter->setBrush(Qt::green);
-        painter->drawRect(_brique);
+        painter->drawRect(QRectF(0, 0, 60, 30));
     }
     else if(_vie==2)
     {
 
         painter->setBrush(QColor(255, 175, 0));
-        painter->drawRect(_brique);
+        painter->drawRect(QRectF(this->_brique.x(), this->_brique.y(), 60, 30));
     }
     else if(_vie==3)
     {
         painter->setBrush(Qt::darkRed);
-        painter->drawRect(_brique);
+        painter->drawRect(QRectF(this->_brique.x(), this->_brique.y(), 60, 30));
     }
 
 
@@ -66,8 +66,5 @@ int Brique:: getType()
     return _type;
 }
 
-void Brique::setType(int type)
-{
-    _type=type;
-}
+
 

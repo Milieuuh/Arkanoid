@@ -2,7 +2,6 @@
 #define FENETREFINPARTIE_H
 
 #include <QWidget>
-#include "fenetrejeu.h"
 
 namespace Ui {
 class fenetreFinPartie;
