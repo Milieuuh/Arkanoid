@@ -22,6 +22,9 @@
      <height>881</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(149, 222, 232);</string>
+   </property>
   </widget>
  </widget>
  <resources/>

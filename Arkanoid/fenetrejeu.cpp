@@ -7,7 +7,7 @@ FenetreJeu::FenetreJeu(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(&_scene);
-    ui->graphicsView->setBackgroundBrush(QImage("fond2.jpg"));
+    //ui->graphicsView->setBackgroundBrush(QImage("fond2.jpg"));
 
     //initialiser mouvement de la balle
     _balleEnMouvement = false;

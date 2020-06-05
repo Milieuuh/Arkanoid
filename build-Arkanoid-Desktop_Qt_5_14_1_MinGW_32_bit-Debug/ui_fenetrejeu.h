@@ -29,6 +29,7 @@ public:
         graphicsView = new QGraphicsView(FenetreJeu);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
         graphicsView->setGeometry(QRect(10, 10, 631, 881));
+        graphicsView->setStyleSheet(QString::fromUtf8("background-color: rgb(149, 222, 232);"));
 
         retranslateUi(FenetreJeu);
 
