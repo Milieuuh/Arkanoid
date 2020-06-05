@@ -12,6 +12,6 @@ QRectF Mur::boundingRect() const
 
 void Mur::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->setBrush(Qt::blue);
+    painter->setBrush(Qt::darkBlue);
     painter->drawRect(_rectangleDelimitant);
 }
