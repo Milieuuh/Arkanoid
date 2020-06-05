@@ -2,7 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "fenetrejeu.h"
+#include <QGraphicsScene>
+#include <QTimer>
+#include "balle.h"
+#include "mur.h"
+#include "plateforme.h"
+#include "brique.h"
+#include <QKeyEvent>
+#include <QGraphicsItem>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,14 +25,27 @@ public:
     ~MainWindow();
 
 public slots:
-
-
-private slots:
-    void afficherJeu();
-    void fermerFenetre();
+    void progressAnimation();
+    void creationBrique();
+    void keyPressEvent(QKeyEvent *event);
+    void lancementBalle();
+    void creationBalleVie();
+    void regenererBriques();
 
 private:
     Ui::MainWindow *ui;
-    FenetreJeu _fenetreJeu;
+    QGraphicsScene _scene;
+    balle* _balle;
+    Plateforme* _platerforme;
+    QTimer _animationTimer;
+    Mur* _murGauche;
+    Mur* _murDroit;
+    Mur* _murHaut;
+    Brique* _brique;
+    bool _balleEnMouvement;
+    int _vie=0;
+    int _nbBalle;
+    int _nbBrique;
+    QVector<Brique*> _listeBrique;
 };
 #endif // MAINWINDOW_H

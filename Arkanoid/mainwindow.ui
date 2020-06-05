@@ -38,6 +38,7 @@
      <height>900</height>
     </size>
    </property>
+<<<<<<< HEAD
    <widget class="QPushButton" name="btn_commencer">
     <property name="geometry">
      <rect>
@@ -104,6 +105,17 @@
      <string>CASSE BRIQUE</string>
     </property>
    </widget>
+=======
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QGraphicsView" name="graphicsView"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+>>>>>>> parent of e998098... ajout d'un menu
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -118,42 +130,5 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>btn_quitter</sender>
-   <signal>pressed()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>fermerFenetre()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>384</x>
-     <y>401</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>390</x>
-     <y>528</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_commencer</sender>
-   <signal>pressed()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>afficherJeu()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>242</x>
-     <y>251</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>276</x>
-     <y>321</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <slot>fermerFenetre()</slot>
-  <slot>afficherJeu()</slot>
- </slots>
+ <connections/>
 </ui>
