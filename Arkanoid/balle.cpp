@@ -66,6 +66,8 @@ void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
             delete brique;
         }
 
+
+
     }
     else if(mur!=NULL)
     {
