@@ -75,18 +75,28 @@ void balle::computeRebound(QGraphicsItem *item, QVector<Brique*> listeBrique)
     }
     else if(mur!=NULL)
     {
-        if(position.x()<positionObstacle.x())
+        if(position.x()>positionObstacle.x())
         {
-            _directionBalle=4.5+3.14159;
+            qInfo("HEYHOOOOOO");
+            _directionBalle=_directionBalle-2.5+3.14159;
         }
-        else if(position.y()>positionObstacle.y())
+        else if (position.x()<positionObstacle.x())
         {
-            _directionBalle=3.5+3.14159;
+            qInfo("IL Y ");
+             _directionBalle=2.5-3.14159;
         }
-        else
+        else if (position.y()<positionObstacle.y())
         {
-            _directionBalle=2*3.14159-_directionBalle;
+            qInfo("A ");
         }
+
+        else if (position.y()>positionObstacle.y())
+        {
+            qInfo("QUELQU UN ??, ");
+            _directionBalle=_directionBalle-2.5+3.14159;
+        }
+
+
     }
     else if(plateforme!=NULL)
     {
