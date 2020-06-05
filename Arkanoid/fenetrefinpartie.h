@@ -17,8 +17,12 @@ public:
 
 private slots:
 
+    void on_recommencer_pressed();
+
 private:
     Ui::fenetreFinPartie *ui;
+
+
 };
 
 #endif // FENETREFINPARTIE_H

@@ -88,25 +88,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_commencer_2">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>320</y>
-      <width>261</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="text">
-     <string>COMMENCER</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

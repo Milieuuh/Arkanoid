@@ -14,4 +14,8 @@ fenetreFinPartie::~fenetreFinPartie()
 }
 
 
+void fenetreFinPartie::on_recommencer_pressed()
+{
+    this->close();
 
+}
