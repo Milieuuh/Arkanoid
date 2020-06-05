@@ -1,0 +1,10 @@
+balle.o
+brique.o
+fenetrejeu.o
+fenetrejeu.o
+main.o
+mainwindow.o
+mur.o
+plateforme.o
+moc_fenetrejeu.o
+moc_mainwindow.o
