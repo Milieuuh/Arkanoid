@@ -13,13 +13,5 @@ fenetreFinPartie::~fenetreFinPartie()
     delete ui;
 }
 
-void fenetreFinPartie::on_pushButton_2_pressed()
-{
-    this->close();
-}
 
-void fenetreFinPartie::on_pushButton_pressed()
-{
-    this->close();
-   // this->_FenetreJeu.show();
-}
+

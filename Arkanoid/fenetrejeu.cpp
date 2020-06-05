@@ -195,3 +195,5 @@ void FenetreJeu::lancementBalle()
     _balleEnMouvement=true;
      _animationTimer.start(10);
 }
+
+
