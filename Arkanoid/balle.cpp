@@ -71,23 +71,18 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
     {
         if(position.x()>positionObstacle.x())
         {
-            qInfo("HEYHOOOOOO");
-            _directionBalle=-4.5+3.14159;
+            qInfo("MUR DE DROITE HEURTE");
+            _directionBalle=_directionBalle-4.5+3.14159;
         }
         else if (position.x()<positionObstacle.x())
         {
-            qInfo("IL Y ");
-             _directionBalle=2.5-3.14159;
+            qInfo("MUR DE GAUCHE HEURTE");
+            _directionBalle=_directionBalle+2.5-3.14159;
         }
-        else if (position.y()<positionObstacle.y())
-        {
-            qInfo("A ");
-        }
-
         else if (position.y()>positionObstacle.y())
         {
             qInfo("QUELQU UN ??, ");
-            _directionBalle=_directionBalle-2.5+3.14159;
+            _directionBalle=-2.5+3.14159;
         }
 
 
