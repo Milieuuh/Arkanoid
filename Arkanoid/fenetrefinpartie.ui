@@ -32,7 +32,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>30</y>
+     <y>10</y>
      <width>421</width>
      <height>101</height>
     </rect>
@@ -58,7 +58,7 @@ color: rgb(204, 29, 29);</string>
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>190</y>
+     <y>240</y>
      <width>261</width>
      <height>81</height>
     </rect>
@@ -82,7 +82,7 @@ color:#FFF;</string>
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>300</y>
+     <y>350</y>
      <width>261</width>
      <height>81</height>
     </rect>
@@ -100,6 +100,23 @@ color:#FFF</string>
    </property>
    <property name="text">
     <string>QUITTER</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="l_score">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>441</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 40pt bold &quot;Calibri&quot;;
+color:rgb(252, 168, 0)</string>
+   </property>
+   <property name="text">
+    <string>VOTRE SCORE : </string>
    </property>
   </widget>
  </widget>

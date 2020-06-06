@@ -72,7 +72,7 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
         if(position.x()>positionObstacle.x())
         {
             qInfo("HEYHOOOOOO");
-            _directionBalle=_directionBalle-2.5+3.14159;
+            _directionBalle=-4.5+3.14159;
         }
         else if (position.x()<positionObstacle.x())
         {

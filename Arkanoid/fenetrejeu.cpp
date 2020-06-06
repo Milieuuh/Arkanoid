@@ -75,6 +75,7 @@ void FenetreJeu::progressAnimation()
         //FIN DE PARTIE
         if(_vie==3)
         {
+            _finPartie.recupererScore(_score);
             _finPartie.show();
             this->close();
         }

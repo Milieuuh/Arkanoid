@@ -14,6 +14,7 @@ class fenetreFinPartie : public QWidget
 public:
     explicit fenetreFinPartie(QWidget *parent = nullptr);
     ~fenetreFinPartie();
+    void recupererScore(int score);
 
 private slots:
 
@@ -21,7 +22,7 @@ private slots:
 
 private:
     Ui::fenetreFinPartie *ui;
-
+    int _score;
 
 };
 
