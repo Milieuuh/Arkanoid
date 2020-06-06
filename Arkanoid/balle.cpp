@@ -91,11 +91,12 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
     {
         if(position.x()<positionObstacle.x())
         {
-            _directionBalle=2*3.14159-_directionBalle;
+           _directionBalle=3.14159+_directionBalle;
         }
         else
         {
-            _directionBalle=3.14159+_directionBalle;
+             _directionBalle=2*3.14159-_directionBalle;
+
         }
     }
     return _score;
