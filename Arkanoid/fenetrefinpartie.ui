@@ -121,22 +121,5 @@ color:rgb(252, 168, 0)</string>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>quitter</sender>
-   <signal>pressed()</signal>
-   <receiver>fenetreFinPartie</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>200</x>
-     <y>215</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>249</x>
-     <y>249</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

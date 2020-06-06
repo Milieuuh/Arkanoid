@@ -24,7 +24,11 @@ void fenetreFinPartie::recupererScore(int score)
 }
 
 void fenetreFinPartie::on_recommencer_pressed()
+{   
+    this->close();
+}
+
+void fenetreFinPartie::on_quitter_pressed()
 {
     this->close();
-
 }

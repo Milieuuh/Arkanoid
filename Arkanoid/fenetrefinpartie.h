@@ -17,8 +17,8 @@ public:
     void recupererScore(int score);
 
 private slots:
-
     void on_recommencer_pressed();
+    void on_quitter_pressed();
 
 private:
     Ui::fenetreFinPartie *ui;

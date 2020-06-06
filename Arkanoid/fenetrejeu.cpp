@@ -77,7 +77,16 @@ void FenetreJeu::progressAnimation()
         {
             _finPartie.recupererScore(_score);
             _finPartie.show();
-            this->close();
+
+            this->destroy();
+            _vie=0;
+            _nbBalle=3;
+            _score=0;
+            creationBalleVie();
+            creationBrique();
+
+            this->hide();
+
         }
     }
 
