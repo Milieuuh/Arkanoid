@@ -48,7 +48,6 @@ void balle::avance()
 int balle::computeRebound(QGraphicsItem *item, int _score)
 {
     QPointF positionObstacle = item->pos();
-    QRectF typeObstacleGeometry = item->boundingRect();
     QPointF position = this->pos();
     Brique* brique = dynamic_cast<Brique*>(item);
     Mur* mur = dynamic_cast<Mur*>(item);
@@ -112,4 +111,6 @@ void balle::setDirectionBalle(double direction)
 {
     this->_directionBalle=direction;
 }
+
+
 

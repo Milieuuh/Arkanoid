@@ -61,14 +61,18 @@ void FenetreJeu::progressAnimation()
 
     if(_balle->pos().y()>50)
     {
+        //MISE A JOUR DE LA BALLE
         _balle->setPos(_platerforme->pos().x(),_platerforme->pos().y());
+        _balleEnMouvement=false;
+        _balle->setDirectionBalle(0);
+        _animationTimer.stop();
+
+        //GESTION DE LA VIE
         _vie++;
         _nbBalle--;
-
-        //_balleEnMouvement=false;
-        //met à jour le nb de balles
         this->creationBalleVie();
 
+        //FIN DE PARTIE
         if(_vie==3)
         {
             _finPartie.show();
