@@ -35,6 +35,7 @@ FenetreJeu::FenetreJeu(QWidget *parent) :
 
     this->creationBalleVie();
     this->creationBrique();
+    _nbBrique=_balle->getNbBrique();
 
 
     this->grabKeyboard();
@@ -92,6 +93,13 @@ void FenetreJeu::progressAnimation()
         }
     }
 
+
+    _nbBrique=_balle->getNbBrique();
+    if(_nbBrique==0)
+    {
+        this->creationBrique();
+    }
+
 }
 
 void FenetreJeu::creationBrique()
@@ -105,6 +113,7 @@ void FenetreJeu::creationBrique()
             _brique = new Brique(0,0,60,30,x);
             _brique->setPos(70+60*i, 50+j*30);
             _scene.addItem(_brique);
+            _nbBrique++;
         }
     }
 }
@@ -203,7 +212,7 @@ void FenetreJeu::lancementBalle()
 void FenetreJeu::afficherScore()
 {
     QString s = "SCORE : ";
-    s+=QString::number(_score);
+    s+=QString::number(_nbBrique);
     this->ui->l_score->setText(s);
 }
 

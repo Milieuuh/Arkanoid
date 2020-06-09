@@ -5,7 +5,7 @@
 
 balle::balle(double x,double y, double taille, double vitesse, double directionBalle):_contourCercle(x,y,taille,taille),_vitesse(vitesse),_directionBalle(directionBalle)
 {
-
+    _nbBriques=80;
 }
 
 QRectF balle::boundingRect() const
@@ -65,6 +65,7 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
         if(brique->getVie()==0)
         {
             delete brique;
+            _nbBriques--;
         }
 
         _score+=10;
@@ -112,5 +113,8 @@ void balle::setDirectionBalle(double direction)
     this->_directionBalle=direction;
 }
 
-
+int balle::getNbBrique()
+{
+    return  _nbBriques;
+}
 

@@ -18,6 +18,7 @@ public:
     int computeRebound(QGraphicsItem *item, int _score);
     void setDirectionBalle(double direction);
     void setTest(int test);
+    int getNbBrique();
 
 
 private:
@@ -26,6 +27,7 @@ private:
     double _vitesse;
     double _directionBalle;
     int _test=0;
+    int _nbBriques;
 
 };
 

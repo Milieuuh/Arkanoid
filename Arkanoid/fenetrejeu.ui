@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Casse Brique</string>
+   <string>CASSE BRIQUE</string>
   </property>
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
