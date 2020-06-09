@@ -26,8 +26,8 @@ private:
     int _type;
     double _vitesse;
     double _directionBalle;
-    int _test=0;
-    int _nbBriques;
+    int _couleurBalle=0;
+    int _nbBriques=80;
 
 };
 

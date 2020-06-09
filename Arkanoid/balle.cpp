@@ -5,7 +5,7 @@
 
 balle::balle(double x,double y, double taille, double vitesse, double directionBalle):_contourCercle(x,y,taille,taille),_vitesse(vitesse),_directionBalle(directionBalle)
 {
-    _nbBriques=80;
+
 }
 
 QRectF balle::boundingRect() const
@@ -15,13 +15,13 @@ QRectF balle::boundingRect() const
 
 void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-
-   if(_test==0)
+    //Détermine la couleur de la balle en fonction du type
+   if(_couleurBalle==0)
    {
        painter->setBrush(Qt::black);
        painter->drawEllipse(_contourCercle);
    }
-   else if(_test==1)
+   else if(_couleurBalle==1)
    {
        painter->setBrush(Qt::white);
        painter->drawEllipse(_contourCercle);
@@ -33,9 +33,9 @@ void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
    }
 }
 
-void balle::setTest(int test)
+void balle::setTest(int couleur)
 {
-    _test=test;
+    _couleurBalle=couleur;
 }
 
 
@@ -59,7 +59,6 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
 
         brique->estTouchee();
 
-        //_directionBalle=4.5+3.14159;
         _directionBalle=_directionBalle+3.14159;
 
         if(brique->getVie()==0)
@@ -72,26 +71,25 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
 
 
     }
+    //Détection des murs
     else if(mur!=NULL)
     {
         if(position.x()>positionObstacle.x())
         {
-            qInfo("MUR DE DROITE HEURTE");
             _directionBalle=_directionBalle-4.5+3.14159;
         }
         else if (position.x()<positionObstacle.x())
-        {
-            qInfo("MUR DE GAUCHE HEURTE");
+        {         
             _directionBalle=_directionBalle+2.5-3.14159;
         }
         else if (position.y()>positionObstacle.y())
-        {
-            qInfo("QUELQU UN ??, ");
+        {           
             _directionBalle=-2.5+3.14159;
         }
 
 
     }
+    //Détection de la plateforme
     else if(plateforme!=NULL)
     {
         if(position.x()<positionObstacle.x())

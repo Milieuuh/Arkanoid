@@ -9,7 +9,6 @@ FenetreJeu::FenetreJeu(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->graphicsView->setScene(&_scene);
-    //ui->graphicsView->setBackgroundBrush(QImage("fond2.jpg"));
 
     //initialiser mouvement de la balle
     _balleEnMouvement = false;
@@ -55,12 +54,14 @@ FenetreJeu::~FenetreJeu()
 void FenetreJeu::progressAnimation()
 {
      _balle->avance();
+     //Collision et score mis à jour
     if(_scene.collidingItems(_balle).isEmpty()==false)
     {
         _score =_balle->computeRebound(_scene.collidingItems(_balle).first(), _score);
         afficherScore();
     }
 
+    //Si la balle sort du cadre
     if(_balle->pos().y()>50)
     {
         //MISE A JOUR DE LA BALLE
@@ -212,7 +213,7 @@ void FenetreJeu::lancementBalle()
 void FenetreJeu::afficherScore()
 {
     QString s = "SCORE : ";
-    s+=QString::number(_nbBrique);
+    s+=QString::number(_score);
     this->ui->l_score->setText(s);
 }
 
