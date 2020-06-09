@@ -1,5 +1,6 @@
 #include "fenetrefinpartie.h"
 #include "ui_fenetrefinpartie.h"
+#include "fenetrejeu.h"
 
 fenetreFinPartie::fenetreFinPartie(QWidget *parent) :
     QWidget(parent),
@@ -23,9 +24,11 @@ void fenetreFinPartie::recupererScore(int score)
 
 }
 
-void fenetreFinPartie::on_recommencer_pressed()
+void fenetreFinPartie::recommencer()
 {   
     this->close();
+
+    jeu.show();
 }
 
 void fenetreFinPartie::on_quitter_pressed()

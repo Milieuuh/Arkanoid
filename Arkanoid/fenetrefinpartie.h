@@ -2,6 +2,7 @@
 #define FENETREFINPARTIE_H
 
 #include <QWidget>
+#include "fenetrejeu.h"
 
 namespace Ui {
 class fenetreFinPartie;
@@ -17,12 +18,13 @@ public:
     void recupererScore(int score);
 
 private slots:
-    void on_recommencer_pressed();
+    void recommencer();
     void on_quitter_pressed();
 
 private:
     Ui::fenetreFinPartie *ui;
     int _score;
+    FenetreJeu jeu;
 
 };
 

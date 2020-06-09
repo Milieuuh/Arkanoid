@@ -11,9 +11,6 @@
 #include <QKeyEvent>
 #include <QGraphicsItem>
 
-#include "fenetrefinpartie.h"
-#include "fenetrefinpartie.h"
-
 namespace Ui {
 class FenetreJeu;
 }
@@ -51,7 +48,7 @@ private:
     int _nbBrique;
     int _score=0;
 
-    fenetreFinPartie _finPartie;
+    //fenetreFinPartie _finPartie;
 };
 
 #endif // FENETREJEU_H

@@ -121,5 +121,25 @@ color:rgb(252, 168, 0)</string>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>recommencer</sender>
+   <signal>pressed()</signal>
+   <receiver>fenetreFinPartie</receiver>
+   <slot>recommencer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>440</x>
+     <y>294</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>recommencer()</slot>
+ </slots>
 </ui>

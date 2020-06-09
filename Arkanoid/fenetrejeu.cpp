@@ -1,6 +1,7 @@
 #include "fenetrejeu.h"
 #include "ui_fenetrejeu.h"
 #include <QVBoxLayout>
+#include "fenetrefinpartie.h"
 
 FenetreJeu::FenetreJeu(QWidget *parent) :
     QWidget(parent),
@@ -75,8 +76,9 @@ void FenetreJeu::progressAnimation()
         //FIN DE PARTIE
         if(_vie==3)
         {
-            _finPartie.recupererScore(_score);
-            _finPartie.show();
+           fenetreFinPartie *_finPartie = new fenetreFinPartie();
+            _finPartie->recupererScore(_score);
+            _finPartie->show();
 
             this->destroy();
             _vie=0;
@@ -85,7 +87,7 @@ void FenetreJeu::progressAnimation()
             creationBalleVie();
             creationBrique();
 
-            this->hide();
+            this->close();
 
         }
     }
