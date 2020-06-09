@@ -95,6 +95,7 @@ void FenetreJeu::progressAnimation()
     }
 
 
+    //On regénère les briques s'il n'y en a plus
     _nbBrique=_balle->getNbBrique();
     if(_nbBrique==0)
     {
