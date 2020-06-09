@@ -56,9 +56,11 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
     //détection des briques
     if(brique != NULL)
     {
+
         brique->estTouchee();
 
-        _directionBalle=4.5+3.14159;
+        //_directionBalle=4.5+3.14159;
+        _directionBalle=_directionBalle+3.14159;
 
         if(brique->getVie()==0)
         {
@@ -66,6 +68,8 @@ int balle::computeRebound(QGraphicsItem *item, int _score)
         }
 
         _score+=10;
+
+
     }
     else if(mur!=NULL)
     {
