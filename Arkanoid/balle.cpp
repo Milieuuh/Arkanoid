@@ -16,16 +16,22 @@ QRectF balle::boundingRect() const
 void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     //Détermine la couleur de la balle en fonction du type
+
+   //Correspond à la balle utilisée
    if(_couleurBalle==0)
    {
        painter->setBrush(Qt::black);
        painter->drawEllipse(_contourCercle);
    }
+
+   //Correspond aux balles représentant les vies du joueur
    else if(_couleurBalle==1)
    {
        painter->setBrush(Qt::white);
        painter->drawEllipse(_contourCercle);
    }
+
+   //Correspond aux balles perdues
    else
    {
        painter->setBrush(Qt::red);
@@ -33,7 +39,7 @@ void balle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
    }
 }
 
-void balle::setTest(int couleur)
+void balle::setCouleur(int couleur)
 {
     _couleurBalle=couleur;
 }

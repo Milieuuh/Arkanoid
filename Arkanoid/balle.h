@@ -17,7 +17,7 @@ public:
     void avance();
     int computeRebound(QGraphicsItem *item, int _score);
     void setDirectionBalle(double direction);
-    void setTest(int test);
+    void setCouleur(int couleur);
     int getNbBrique();
 
 

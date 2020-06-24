@@ -27,7 +27,6 @@ void fenetreFinPartie::recupererScore(int score)
 void fenetreFinPartie::recommencer()
 {   
     this->close();
-
     jeu.show();
 }
 

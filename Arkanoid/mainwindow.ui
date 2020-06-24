@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>MENU</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(149, 222, 232);</string>
@@ -162,7 +162,7 @@ color:rgb(252, 168, 0)</string>
    <hints>
     <hint type="sourcelabel">
      <x>384</x>
-     <y>401</y>
+     <y>376</y>
     </hint>
     <hint type="destinationlabel">
      <x>390</x>

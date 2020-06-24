@@ -128,7 +128,7 @@ void FenetreJeu::creationBalleVie()
         for(int i=0; i<_nbBalle;i++)
         {
              balle* _balleVie=new balle(0,0,20,3);
-             _balleVie->setTest(1);
+             _balleVie->setCouleur(1);
              _balleVie->setPos(480+25*i,-28);
              _scene.addItem(_balleVie);
         }
@@ -139,7 +139,7 @@ void FenetreJeu::creationBalleVie()
         for(int i=0; i<_vie;i++)
         {
             balle* _balleVie=new balle(0,0,20,3);
-            _balleVie->setTest(2);
+            _balleVie->setCouleur(2);
             _balleVie->setPos(480+25*i,-28);
            _scene.addItem(_balleVie);
         }
